@@ -27,16 +27,23 @@ class AllItems extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 155.0,
-                    height: index % 2 == 0 ? 220.0 : 270,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover, image: NetworkImage(item.image)),
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      color: Colors.redAccent,
+                  Stack(children: [
+                    Hero(
+                      tag: item.title,
+                      child: Container(
+                        width: 155.0,
+                        height: index % 2 == 0 ? 220.0 : 270,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(item.image)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          color: Colors.redAccent,
+                        ),
+                      ),
                     ),
-                    child: Align(
+                    Align(
                       alignment: Alignment.topRight,
                       child: Container(
                         margin: const EdgeInsets.only(top: 15, right: 10),
@@ -64,7 +71,7 @@ class AllItems extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
+                  ]),
                   Container(
                     padding:
                         const EdgeInsets.symmetric(vertical: 3, horizontal: 3),
